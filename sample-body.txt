@@ -1,0 +1,42 @@
+Create Payment Intent
+Request:
+
+Endpoint: POST http://localhost:3000/create-payment-intent
+Body:
+    {
+        "amount": 1000,
+        "currency": "usd"
+    }
+
+Response:
+    {
+        "clientSecret": "pi_3PZpnaRp2pNI4vz80vx8BDbR_secret_Ky7Qzx5yDZOlXpR6VADpqJ2fz",
+        "paymentIntentId": "pi_3PZpnaRp2pNI4vz80vx8BDbR"
+    }
+
+
+
+
+Confirm Payment Intent with Test Token
+For confirming the Payment Intent, you can use a test token. For example, pm_card_visa is a test token that simulates a successful card payment.
+
+Request:
+
+Endpoint: POST http://localhost:3000/confirm-payment
+Body:
+    {
+        "paymentIntentId": "pi_3PZpnaRp2pNI4vz80vx8BDbR",
+        "paymentMethodId": "pm_card_visa"
+    }
+
+Response:
+
+    {
+        "id": "pi_3PZpnaRp2pNI4vz80vx8BDbR",
+        "object": "payment_intent",
+        "amount": 1000,
+        "currency": "usd",
+        "payment_method": "pm_card_visa",
+        "status": "succeeded",
+    ...
+    }
